@@ -13,16 +13,30 @@
 	</head>
 	<body>
 		<h2>
-			<span class='temperature'>20</span>°C
+			<span class='temperature'></span>°C
 		</h2>	
-		<button>▲</button>
-		<button>▼</button>
+		<button class='increaseTemp'>▲</button>
+		<button class='decreaseTemp'>▼</button>
 
 		<script src='src/Thermostat.js'></script>
 		<script src='https://code.jquery.com/jquery-2.1.1.min.js'></script>
 		<script>
+			function updateTemperature(thermostat) {
+				$('.temperature').text(thermostat.temperature);
+			}
 			$(document).ready(function(){
-				console.log('hello');
+				var	thermostat = new Thermostat()
+				updateTemperature(thermostat);
+
+				$('.increaseTemp').on('click', function() {
+					thermostat.increaseTemperature();
+				updateTemperature(thermostat);
+				})
+
+				$('.decreaseTemp').on('click', function() {
+					thermostat.decreaseTemperature();
+				updateTemperature(thermostat);
+				})
 			})
 		</script>
 	</body>
