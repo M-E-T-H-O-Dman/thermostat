@@ -16,6 +16,27 @@ describe("Thermostat", function() {
       thermostat.increaseTemperature();
       expect(thermostat.temperature).toEqual(21);
     })
+
+    it('does not increate if temp >= 25 degrees', function() {
+      thermostat.temperature = 25;
+
+      thermostat.increaseTemperature();
+      expect(thermostat.temperature).toEqual(25);
+    })
+  })
+
+  describe('decreasing the temperature', function() {
+    it('decreases if > 10 degrees', function() {
+      thermostat.decreaseTemperature();
+      expect(thermostat.temperature).toEqual(19);
+    })
+
+    it('does not decrease if temp <= 10 degrees', function() {
+      thermostat.temperature = 10;
+
+      thermostat.decreaseTemperature();
+      expect(thermostat.temperature).toEqual(10);
+    })
   })
 });
  
