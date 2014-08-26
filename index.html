@@ -40,6 +40,8 @@
 			function updateTemperature(thermostat) {
 				$('.temperature').text(thermostat.temperature);
 				$('h2').attr('class', '').addClass(thermostat.energyUsage());
+
+				$.post('http:localost:4567/temperature_change', { newTemperature: thermostat.temperature })
 			}
 			$(document).ready(function(){
 				var	thermostat = new Thermostat()
